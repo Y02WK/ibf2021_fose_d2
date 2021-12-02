@@ -9,7 +9,7 @@ public class FixedDepositAccount extends BankAccount {
         fdacc.withdraw(100f);
     }
 
-    private Float interest = 3f;
+    private float interest = 3f;
     private int duration = 6;
     
     public FixedDepositAccount (String name, float balance) {
