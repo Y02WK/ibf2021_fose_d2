@@ -66,9 +66,9 @@ public class BankAccount {
         this.addTransaction(Float.toString(amount), "withdraw");
     }
 
-    public void getAccountBalance() {
+    public Float getAccountBalance() {
         // Getter method to get the account balance
-        System.out.println(this.accountBalance);
+        return(this.accountBalance);
     }
 
     public void getAccountName() {
