@@ -75,31 +75,29 @@ public class BankAccount {
         return(this.accountBalance);
     }
 
-    public void getAccountName() {
+    public String getAccountName() {
         // Getter method to print the name of the account owner
-        System.out.println(this.name);
+        return (this.name);
     }
 
-    public void getAccountNumber() {
+    public String getAccountNumber() {
         // Getter method to print the account number
-        System.out.println(this.accountNumber);
+        return (this.accountNumber);
     }
 
-    public void getAccountOpenDate() {
+    public Date getAccountOpenDate() {
         // Getter method to print the account opening date
-        System.out.println(this.accountOpened);
+        return (this.accountOpened);
     }
 
-    public void getAccountCloseDate() {
+    public Date getAccountCloseDate() {
         // Getter method to print the account closing date
-        System.out.println(this.accountClosed);
+        return (this.accountClosed);
     }
 
-    public void getAccountTransactions() {
+    public ArrayList<String> getAccountTransactions() {
         // Getter method to print all the transactions in the account
-        for (int i = 0; i < this.transactions.size(); i++) {
-            System.out.println(transactions.get(i));
-        }
+        return (this.transactions);
     }
 
     private void checkActive() {

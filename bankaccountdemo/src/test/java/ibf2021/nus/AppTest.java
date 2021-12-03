@@ -17,4 +17,15 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    @Test
+    public void testDeposit()
+    {
+        BankAccount bankAccount = new BankAccount("Kin");
+        bankAccount.deposit(100f);
+
+        assertTrue(bankAccount.getAccountBalance()==100f);
+        assertTrue(bankAccount.getAccountTransactions().size()==1);
+        assertTrue(bankAccount.getAccountName().equals("Kin"));
+    }
 }
