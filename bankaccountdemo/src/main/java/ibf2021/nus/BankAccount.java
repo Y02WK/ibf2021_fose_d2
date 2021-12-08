@@ -1,5 +1,6 @@
 package ibf2021.nus;
 
+import java.math.BigDecimal;
 /**
  * Hello world!
  *
@@ -11,7 +12,7 @@ import java.util.Random;
 public class BankAccount {
     private final String name;
     private final String accountNumber;
-    private float accountBalance = 0;
+    private BigDecimal accountBalance = BigDecimal.ZERO;
     private ArrayList<String> transactions = new ArrayList<String>();
     private boolean accountActive;
     private Date accountOpened;
@@ -28,7 +29,7 @@ public class BankAccount {
     public BankAccount(String name, float accountBalance) {
         // Constructor with two parameters (updates name and accountBalance)
         this.name = name;
-        this.accountBalance = accountBalance;
+        this.accountBalance = new BigDecimal(Float.toString(accountBalance));
         this.accountActive = true;
         this.accountOpened = new Date();
         this.accountNumber = generateAccountNumber();
@@ -46,8 +47,9 @@ public class BankAccount {
         if (!validationChecks(amount))
             return;
 
-        this.accountBalance += amount;
-        this.addTransaction(Float.toString(amount), "deposit");
+        BigDecimal deposit = new BigDecimal(Float.toString(amount));
+        this.accountBalance = (this.accountBalance.add(deposit));
+        this.addTransaction(deposit.toString(), "deposit");
     }
 
     public void withdraw(float amount) {
@@ -55,11 +57,21 @@ public class BankAccount {
         if (!this.validationChecks(amount))
             return;
 
-        this.accountBalance -= amount;
-        this.addTransaction(Float.toString(amount), "withdraw");
+        BigDecimal withdrawal = new BigDecimal(Float.toString(amount));
+        if (this.accountBalance.subtract(withdrawal).compareTo(BigDecimal.ZERO) > 0) {
+            this.accountBalance = (this.accountBalance.subtract(withdrawal));
+            this.addTransaction(withdrawal.toString(), "withdraw");
+        } else {
+            System.out.println("Error. Not enough funds in account.");
+        }
     }
 
-    public Float getAccountBalance() {
+    public void closeAccount() {
+        this.accountActive = false;
+        this.accountClosed = new Date();
+    }
+
+    public BigDecimal getAccountBalance() {
         // Getter method to get the account balance
         return (this.accountBalance);
     }
@@ -87,6 +99,10 @@ public class BankAccount {
     public ArrayList<String> getAccountTransactions() {
         // Getter method to print all the transactions in the account
         return (this.transactions);
+    }
+
+    public boolean getAccountActive() {
+        return (this.accountActive);
     }
 
     private void checkActive() {

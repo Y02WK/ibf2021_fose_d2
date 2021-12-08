@@ -1,5 +1,7 @@
 package ibf2021.nus;
 
+import java.math.BigDecimal;
+
 public class FixedDepositAccount extends BankAccount {
 
     public static void main(String[] args) {
@@ -39,8 +41,12 @@ public class FixedDepositAccount extends BankAccount {
         return;
     }
 
-    public Float getBalance() {
-        return (this.interest * this.getAccountBalance() / 100 + this.getAccountBalance());
+    public BigDecimal getBalance() {
+        BigDecimal bdInterest = new BigDecimal(Float.toString(interest));
+        BigDecimal bdBalance = this.getAccountBalance();
+        BigDecimal calcResult = bdInterest.multiply(bdBalance).divide(new BigDecimal(Float.toString(100f)))
+                .add(bdBalance);
+        return calcResult;
     }
 
     public int getDuration() {
