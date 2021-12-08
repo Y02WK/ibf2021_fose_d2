@@ -48,7 +48,7 @@ public class AppTest {
     public void testWithdrawal() {
         bankAccount2.deposit(100.5f);
         bankAccount2.withdraw(50.3f);
-        // bankAccount2.withdraw(100000f);
+        bankAccount2.withdraw(100000f);
         ArrayList<String> myT = bankAccount2.getAccountTransactions();
 
         assertEquals(bankAccount2.getAccountBalance().compareTo(new BigDecimal(Double.toString(20050.2))), 0);
