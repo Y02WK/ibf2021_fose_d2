@@ -7,13 +7,14 @@ import java.math.BigDecimal;
  */
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 public class BankAccount {
     private final String name;
     private final String accountNumber;
     private BigDecimal accountBalance = BigDecimal.ZERO;
-    private ArrayList<String> transactions = new ArrayList<String>();
+    private List<String> transactions = new ArrayList<String>();
     private boolean accountActive;
     private Date accountOpened;
     private Date accountClosed = null;
@@ -96,7 +97,7 @@ public class BankAccount {
         return (this.accountClosed);
     }
 
-    public ArrayList<String> getAccountTransactions() {
+    public List<String> getAccountTransactions() {
         // Getter method to print all the transactions in the account
         return (this.transactions);
     }

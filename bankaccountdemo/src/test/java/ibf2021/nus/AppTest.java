@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -34,7 +34,7 @@ public class AppTest {
     public void testBankAccount() {
         bankAccount.deposit(100f);
         bankAccount.deposit(200.1f);
-        ArrayList<String> myT = bankAccount.getAccountTransactions();
+        List<String> myT = bankAccount.getAccountTransactions();
 
         assertEquals(bankAccount.getAccountBalance().compareTo(new BigDecimal(Double.toString(300.1))), 0);
         assertTrue(bankAccount.getAccountTransactions().size() == 2);
@@ -49,7 +49,7 @@ public class AppTest {
         bankAccount2.deposit(100.5f);
         bankAccount2.withdraw(50.3f);
         bankAccount2.withdraw(100000f);
-        ArrayList<String> myT = bankAccount2.getAccountTransactions();
+        List<String> myT = bankAccount2.getAccountTransactions();
 
         assertEquals(bankAccount2.getAccountBalance().compareTo(new BigDecimal(Double.toString(20050.2))), 0);
         assertTrue(bankAccount2.getAccountTransactions().size() == 2);
